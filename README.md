@@ -109,6 +109,73 @@ Deploy the `build` folder to any static hosting service:
 - AWS S3
 - Any web server
 
+### GitHub Pages Deployment
+
+To deploy FossFLOW to GitHub Pages, follow these steps:
+
+1. **Prepare the project**
+
+```bash
+# Clone the repository (if not already cloned)
+git clone https://github.com/Nexchard/FossFLOW-Page.git
+cd FossFLOW-Page
+
+# Install dependencies
+npm install
+```
+
+2. **Modify build path**
+
+Edit package.json and add the homepage field (adjust according to your GitHub username and repository name):
+```json
+"homepage": "https://<your-username>.github.io/FossFLOW-Page",
+```
+
+Example:
+```json
+"homepage": "https://Nexchard.github.io/FossFLOW-Page",
+```
+
+3. **Build production version**
+
+```bash
+npm run build  # This will generate the build directory
+```
+
+4. **Add deployment script**
+
+Install the gh-pages package:
+```bash
+npm install gh-pages --save-dev
+```
+
+Add the deployment script to package.json:
+```json
+"scripts": {
+  "predeploy": "PUBLIC_URL=https://<你的用户名>.github.io/FossFLOW-Page npm run build",
+  "deploy": "gh-pages -d build"
+}
+```
+
+5. **Execute deployment**
+
+```bash
+npm run deploy
+```
+
+Upon success, you will see:
+```
+Published to https://<your-username>.github.io/FossFLOW-Page
+```
+
+6. **Enable GitHub Pages**
+
+1. Visit your GitHub repository
+2. Go to Settings → Pages
+3. Make sure the gh-pages branch is selected as the source
+4. Wait a few minutes, then visit the generated URL (format: https://\<username>.github.io/FossFLOW-Page)
+
+
 ### Important Notes
 
 1. **HTTPS Required**: PWA features require HTTPS (except localhost)
