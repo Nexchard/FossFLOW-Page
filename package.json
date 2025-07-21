@@ -2,6 +2,7 @@
   "name": "fossflow-local",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://Nexchard.github.io/FossFLOW",
   "dependencies": {
     "@isoflow/isopacks": "^0.0.10",
     "fossflow": "^1.0.5",
